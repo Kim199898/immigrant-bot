@@ -4,9 +4,9 @@ from dotenv import load_dotenv
 load_dotenv()
 import telebot
 from flask import Flask, request
+API_TOKEN = os.getenv("API_TOKEN")
+CRYPTOBOT_TOKEN = os.getenv("CRYPTOBOT_TOKEN")
 
-API_TOKEN = '7091791198:AAF7u5cBPcbW4PdZNFSJMSmXHp6qiivVEqk'
-CRYPTOBOT_TOKEN = '422556:AAqQNiD1shllqc3uaDXXC2XnzPGKCQJF0SN'
 PDF_FILE_PATH = 'pdf/9_steps_guide.pdf'
 
 bot = telebot.TeleBot(API_TOKEN)
