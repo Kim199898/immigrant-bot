@@ -1,0 +1,45 @@
+from telegram import Update
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
+# ВСТАВЬ СЮДА СВОЙ ТОКЕН
+BOT_TOKEN = "7091791198:AAF7u5cBPcbW4PdZNFSJMSmXHp6qiivVEqk"
+
+# Приветствие
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "👋 Привет! Добро пожаловать в бота *9 шагов для новых мигрантов в США*.\n\n"
+        "👉 /buy — Купить гайд\n"
+        "👉 /help — Получить помощь",
+        parse_mode="Markdown"
+    )
+
+# Покупка
+async def buy(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "🛍 Нажмите, чтобы оплатить и получить гайд:\n"
+        "[💵 Купить за $9.99](https://t.me/CryptoBot?start=store_A422556_guide)",
+        parse_mode="Markdown"
+    )
+
+# Помощь
+async def help(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        "📘 Инструкция:\n"
+        "1. Нажмите /buy\n"
+        "2. Оплатите гайд\n"
+        "3. Получите PDF автоматически",
+        parse_mode="Markdown"
+    )
+
+# Запуск
+def main():
+    app = ApplicationBuilder().token(BOT_TOKEN).build()
+
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(CommandHandler("buy", buy))
+    app.add_handler(CommandHandler("help", help))
+
+    app.run_polling()
+
+if __name__ == '__main__':
+    main()
